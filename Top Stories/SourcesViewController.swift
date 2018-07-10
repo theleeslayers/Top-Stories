@@ -13,59 +13,52 @@ class SourcesViewController: UITableViewController{
     @IBAction func onTappedDoneButton(_ sender: Any) {
         exit(0)
     }
-    var sources = [[String: String]]()
-    let apiKey = "5d892509a49046a087917c466fa80d09"
+    //var sources = [[String: String]]()
+    var pokemonTypes = [String]()
+    var nameKey = "pikachu"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "News Sources"
-        let query = "https://newsapi.org/v1/sources?language=en&country=us&apiKey=\(apiKey)"
-        DispatchQueue.global(qos: .userInitiated) .async {
-            [unowned self] in
-        if let url = URL(string: query) {
-            if let data = try? Data(contentsOf: url) {
-                let json = try! JSON(data: data)
-                if json["status"] == "ok" {
-                    self.parse(json: json)
-                    return
-                    }
-                }
-            }
-        self.loadError()
-        }
+        self.title = "Pokemon Cards"
+        
+        pokemonTypes.append("pikachu")
+        pokemonTypes.append("charizard")
+        pokemonTypes.append("squirtle")
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sources.count
+        return pokemonTypes.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let source = sources[indexPath.row]
-        cell.textLabel?.text = source["name"]
-        cell.detailTextLabel?.text = source["description"]
+        let source = pokemonTypes[indexPath.row]
+        //cell.textLabel?.text = source["name"]
+        //cell.detailTextLabel?.text = source["description"]
+        cell.textLabel?.text = source
         return cell
         
     }
-    
-    func parse(json: JSON){
-        for result in json["sources"].arrayValue {
-            let id = result["id"].stringValue
+
+    /*func parse(json: JSON){
+        for result in json["cards"].arrayValue {
+            print(result)
+            let hp = result["hp"].stringValue
             let name = result["name"].stringValue
-            let description = result["description"].stringValue
-            let source = ["id": id, "name": name, "desciption": description]
+            let imageURL = result["imageUrl"].stringValue
+            let source = ["hp": hp, "name": name, "imageUrl": imageURL]
             sources.append(source)
         }
         DispatchQueue.main.async {
             [unowned self] in
             self.tableView.reloadData()
         }
-    }
+    }*/
 
     func loadError() {
         DispatchQueue.main.async {
             [unowned self] in
         let alert = UIAlertController(title: "Loading Error",
-                                      message: "There was a problem loading the news feed",
+                                      message: "There was a problem loading the feed",
                                       preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
@@ -79,8 +72,8 @@ class SourcesViewController: UITableViewController{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let dvc = segue.destination as! ArticlesViewController
         let index = tableView.indexPathForSelectedRow?.row
-        dvc.source = sources[index!]
-        dvc.apiKey = apiKey
+        nameKey = pokemonTypes[index!]
+        dvc.query = "https://api.pokemontcg.io/v1/cards?name=\(nameKey)"
     }
 }
 
