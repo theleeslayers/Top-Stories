@@ -10,6 +10,9 @@ import UIKit
 
 class SourcesViewController: UITableViewController{
 
+    @IBAction func onTappedDoneButton(_ sender: Any) {
+        exit(0)
+    }
     var sources = [[String: String]]()
     let apiKey = "5d892509a49046a087917c466fa80d09"
     
@@ -72,6 +75,12 @@ class SourcesViewController: UITableViewController{
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let dvc = segue.destination as! ArticlesViewController
+        let index = tableView.indexPathForSelectedRow?.row
+        dvc.source = sources[index!]
+        dvc.apiKey = apiKey
     }
 }
 

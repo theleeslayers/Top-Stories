@@ -42,7 +42,6 @@ class ArticlesViewController: UITableViewController{
         cell.textLabel?.text = article["title"]
         cell.detailTextLabel?.text = article["description"]
         return cell
-        
     }
     
     func parse(json: JSON){
@@ -73,6 +72,10 @@ class ArticlesViewController: UITableViewController{
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let url = URL(string: articles[indexPath.row]["url"]!)
+        UIApplication.shared.open(url! as URL, options: [:], completionHandler: nil)
     }
 }
 
