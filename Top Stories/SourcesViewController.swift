@@ -45,6 +45,14 @@ class SourcesViewController: UITableViewController{
                                       preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
+    }
+    
+    override func tableView(_tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier( identifier, forIndexpath)
+        let source = soiurces[indexPath.row]
+        cell.textLabel?.text = source["Name"]
+        cell.detailTextLabel?.text = source["Description"]
+        return cell
         
     }
     
