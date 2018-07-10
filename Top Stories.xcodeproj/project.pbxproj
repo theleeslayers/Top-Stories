@@ -15,6 +15,7 @@
 		894BDE1D20F502E000DFCA4E /* Top_StoriesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894BDE1C20F502E000DFCA4E /* Top_StoriesTests.swift */; };
 		894BDE2820F502E000DFCA4E /* Top_StoriesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894BDE2720F502E000DFCA4E /* Top_StoriesUITests.swift */; };
 		894BDE3620F5058200DFCA4E /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894BDE3520F5058100DFCA4E /* SwiftyJSON.swift */; };
+		894BDE3820F5126D00DFCA4E /* ArticlesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894BDE3720F5126D00DFCA4E /* ArticlesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		894BDE2720F502E000DFCA4E /* Top_StoriesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Top_StoriesUITests.swift; sourceTree = "<group>"; };
 		894BDE2920F502E000DFCA4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		894BDE3520F5058100DFCA4E /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		894BDE3720F5126D00DFCA4E /* ArticlesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			children = (
 				894BDE0720F502DF00DFCA4E /* AppDelegate.swift */,
 				894BDE0920F502DF00DFCA4E /* SourcesViewController.swift */,
+				894BDE3720F5126D00DFCA4E /* ArticlesViewController.swift */,
 				894BDE3520F5058100DFCA4E /* SwiftyJSON.swift */,
 				894BDE0B20F502DF00DFCA4E /* Main.storyboard */,
 				894BDE0E20F502E000DFCA4E /* Assets.xcassets */,
@@ -260,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				894BDE3620F5058200DFCA4E /* SwiftyJSON.swift in Sources */,
+				894BDE3820F5126D00DFCA4E /* ArticlesViewController.swift in Sources */,
 				894BDE0A20F502DF00DFCA4E /* SourcesViewController.swift in Sources */,
 				894BDE0820F502DF00DFCA4E /* AppDelegate.swift in Sources */,
 			);
